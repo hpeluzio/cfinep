@@ -1,9 +1,9 @@
 version: '3.2'
 
 services:
-  mysql-db-sia:
+  mysql-db-cfinep:
     image: mysql:5.7
-    container_name: mysql-db-sia
+    container_name: mysql-db-cfinep
     restart: always
     ports:
       - 3306:3306
@@ -13,22 +13,22 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
 
-  phpmyadmin:
+  phpmyadmin-cfinep:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin
+    container_name: phpmyadmin-cfinep
     restart: always
     links:
-      - mysql-db-sia
+      - mysql-db-cfinep
     ports:
       - 8888:80
     environment:
       PMA_ARBITRARY: 1
     depends_on:
-      - mysql-db-sia
+      - mysql-db-cfinep
 
-  backend-sia:
+  backend-cfinep:
     build: .
-    container_name: backend-sia
+    container_name: backend-cfinep
     restart: always
     ports:
        - 3333:3333
@@ -36,9 +36,9 @@ services:
        - ./:/usr/src/app
     command: nodemon server.js
     links:
-        - mysql-db-sia
+        - mysql-db-cfinep
     depends_on:
-      - mysql-db-sia
+      - mysql-db-cfinep
 
 volumes:
   data:
