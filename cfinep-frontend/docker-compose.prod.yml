@@ -1,0 +1,27 @@
+version: '3.2'
+
+services:
+  frontend-sia:
+     build: .
+     restart: always
+     container_name: frontend-sia-prod
+     volumes:
+       - ./:/usr/src/app
+     ports:
+       - 80:5000
+     env_file:
+       - .env
+     command: serve -s dist
+
+
+#version: '3.2'
+
+#services:
+#  frontend-sia-prod:
+#     image: nginx
+#     container_name: frontend-sia-prod
+#     restart: always
+#     volumes:
+#       - ./dist:/usr/share/nginx/html
+#     ports:
+#       - 80:80
