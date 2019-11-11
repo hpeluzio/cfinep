@@ -6,7 +6,7 @@
             <b-card no-body class="p-4">
               <b-card-body>
                 <b-form>
-                  <h1>SIA<strong>UFV</strong></h1> 
+                  <h1>C<strong>FINEP</strong></h1> 
                   <p class="text-muted">Entre com sua conta</p>
                   <b-input-group class="mb-3">
                     <b-input-group-prepend><b-input-group-text><i class="icon-user"></i></b-input-group-text></b-input-group-prepend>
@@ -80,7 +80,7 @@ export default {
   },
 
   created() {
-    document.title = "SIA - Login"
+    document.title = "CLUSTER FINEP - Login"
   },
   
   methods: {

@@ -104,7 +104,7 @@ export default {
     }
   },
   created() {
-    document.title = "SIA - atualizar";
+    document.title = "CFINEP - atualizar";
     //Setando dados do usuario
     this.setDados()
 

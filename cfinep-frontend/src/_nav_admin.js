@@ -2,7 +2,7 @@ export default {
   items: [
     // {
     //   title: true,
-    //   name: 'Menu Admin',
+    //   name: 'Menu',
     //   class: '',
     //   wrapper: {
     //     element: '',
@@ -17,7 +17,7 @@ export default {
 
     {
       title: true,
-      name: 'Lançamentos do Sistema',
+      name: 'Informações do Cluster',
       class: '',
       wrapper: {
         element: '',
@@ -26,54 +26,117 @@ export default {
     },
 
     {
-      name: 'Institutos',
-      url: '/admin/institutos',
-      icon: 'cui-graph'
+      name: 'Informações',
+      url: '/infos',
+      icon: 'cui-star'
     },
+
     {
-      name: 'Anos',
-      url: '/admin/anos',
-      icon: 'icon-calendar'
+      name: 'Política de Uso',
+      url: '/politicadeuso',
+      icon: 'cui-ban'
+    },    
+
+    {
+      name: 'Uso do Ambiente Cluster',
+      url: '/usodoambiente',
+      icon: 'cui-code'
     },
+
+
+    // {
+    //   name: 'Anos',
+    //   url: '/anos',
+    //   icon: 'icon-calendar'
+    // },
+    // {
+    //   name: 'Salas',
+    //   url: '/salas',
+    //   icon: 'cui-location-pin'
+    // },
+    // {
+    //   name: 'Avaliadores',
+    //   url: '/avaliadores',
+    //   icon: 'icon-people'
+    // },
+    // {
+    //   name: 'Trabalhos',
+    //   url: '/trabalhos',
+    //   icon: 'icon-pencil'
+    // },
+
+    // {
+    //   title: true,
+    //   name: 'Consulta de Sessões',
+    //   class: '',
+    //   wrapper: {
+    //     element: '',
+    //     attributes: {}
+    //   }
+    // },
+    // {
+    //   name: 'Orais',
+    //   url: '/orais',
+    //   icon: 'cui-speech'
+    // },
+    // {
+    //   name: 'Paineis',
+    //   url: '/paineis',
+    //   icon: 'cui-dashboard'
+    // },
+
+    // {
+    //   title: true,
+    //   name: 'Relatórios',
+    //   class: '',
+    //   wrapper: {
+    //     element: '',
+    //     attributes: {}
+    //   }
+    // },
+
+    // {
+    //   name: '> Avaliadores por Instituto',
+    //   url: '/avaliadoresporinstituto',
+    // },
+    // {
+    //   name: '> Trabalhos por Instituto',
+    //   url: '/trabalhosporinstituto',
+    // },
+    // {
+    //   name: '> Salas e suas Sessões',
+    //   url: '/sessoesporsala',
+    // },
+    // {
+    //   name: 'Sessões Orais',
+    //   url: '/relatorios_orais',
+    // },
+    // {
+    //   name: 'Sessões Paineis',
+    //   url: '/relatorios_paineis',
+    // },
+
+
     {
-      name: 'Salas',
-      url: '/admin/salas',
-      icon: 'cui-location-pin'
+      title: true,
+      name: 'Requisições',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
     },
+
     {
-      name: 'Avaliadores',
-      url: '/admin/avaliadores',
-      icon: 'icon-people'
-    },
-    {
-      name: 'Trabalhos',
-      url: '/admin/trabalhos',
+      name: 'Preencher formulário',
+      url: '/formulario',
       icon: 'icon-pencil'
     },
 
-    {
-      title: true,
-      name: 'Lançamentos de Sessões',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
-    },
-    {
-      name: 'Orais',
-      url: '/admin/orais',
-      icon: 'cui-speech'
-    },
-    {
-      name: 'Paineis',
-      url: '/admin/paineis',
-      icon: 'cui-dashboard'
-    },
 
     {
       title: true,
-      name: 'Relatórios',
+      name: 'Formulários',
       class: '',
       wrapper: {
         element: '',
@@ -82,43 +145,15 @@ export default {
     },
 
     {
-      name: '> Avaliadores por Instituto',
-      url: '/admin/avaliadoresporinstituto',
-    },
-    {
-      name: '> Trabalhos por Instituto',
-      url: '/admin/trabalhosporinstituto',
-    },
-    {
-      name: '> Salas e suas Sessões',
-      url: '/admin/sessoesporsala',
-    },
-    {
-      name: 'Sessões Orais',
-      url: '/admin/relatorios_orais',
-    },
-    {
-      name: 'Sessões Paineis',
-      url: '/admin/relatorios_paineis',
-    },
+      name: 'Imprimir Formulário',
+      url: '/fichas_orais',
+      icon: 'cui-print'
 
-    {
-      title: true,
-      name: 'Fichas',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
     },
-    {
-      name: 'Fichas trabalhos Orais',
-      url: '/admin/fichas_orais',
-    },
-    {
-      name: 'Fichas trabalhos Paineis',
-      url: '/admin/fichas_paineis',
-    },
+    // {
+    //   name: 'Fichas trabalhos Paineis',
+    //   url: '/fichas_paineis',
+    // },
 
 
     // {

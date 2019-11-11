@@ -2,9 +2,11 @@
   <div class="app">
     <AppHeader fixed :style="dev">
       <SidebarToggler class="d-lg-none" display="md" mobile />
-      <b-link class="navbar-brand" to="/admin">
-        <img class="navbar-brand-full" src="/img/brand/logo.svg" width="89" height="25" alt="SIA Logo">
-        <img class="navbar-brand-minimized" src="/img/brand/sygnet.svg" width="30" height="30" alt="SIA Logo">
+      <b-link class="navbar-brand" to="/login">
+        <span class="navbar-brand-full" style="color:black;"> CLUSTER<span style="color: black; fontWeight: bold">FINEP</span></span>
+        <span class="navbar-brand-minimized" style="color:black;"> C<span style="color: black; fontWeight: bold">FINEP</span></span> 
+        <!-- <img class="navbar-brand-full" src="/img/brand/logo.svg" width="89" height="25" alt="SIA Logo">
+        <img class="navbar-brand-minimized" src="/img/brand/sygnet.svg" width="30" height="30" alt="SIA Logo"> -->
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-navbar-nav class="d-md-down-none">
