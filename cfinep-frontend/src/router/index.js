@@ -19,7 +19,7 @@ const Home = () => import('@/views/user/Home')
 const Infos = () => import('@/views/Infos')
 const Politica = () => import('@/views/Politica')
 const UsoDoAmbiente = () => import('@/views/UsoDoAmbiente')
-const Formulario = () => import('@/views/Formulario')
+const Formulario = () => import('@/views/formulario/Formulario')
 
 //Fichas
 const FichasOrais = () => import('@/views/fichas/FichasOrais')

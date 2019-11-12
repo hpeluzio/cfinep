@@ -9,8 +9,12 @@ const pluginLocalStorage = store => {
 
 
     store.subscribe((mutation, state) => {
-      //console.log('mutation.type: ', mutation.type)
+      console.log('mutation.type: ', mutation.type)
       ls.set('state', state)
+
+      //Sempre que deslogar resetar o formulário
+      if(mutation.type ==  'auth/SET_DESLOGAR')
+        store.dispatch('formulario/RESET_FORMULARIO_ACT')
     //   ls.set('auth', state.auth)
     })
   }

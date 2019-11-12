@@ -283,17 +283,11 @@
 
                 <!-- agencia_financiadora -->
                 <v-flex xs12 sm12 md12 v-show="form.projeto_financiado">
-                  <div
-                    v-if="submitted && errors.has('agencia_financiadora') && form.projeto_financiado"
-                    style="color: red"
-                  >{{ errors.first('agencia_financiadora') }}</div>
+                  <div></div>
                   <v-text-field
                     outline
                     v-model="form.agencia_financiadora"
                     label="Se sim, nome da agência financiadora"
-                    data-vv-name="agencia_financiadora"
-                    v-validate="'required'"
-                    :class="{ 'is-invalid': submitted && errors.has('agencia_financiadora') }"
                   ></v-text-field>
                 </v-flex>
 
@@ -376,6 +370,7 @@
                   Baixar Formulário em PDF
                   <v-icon color="white" large @click="jsreport()">archive</v-icon>
                 </v-btn>
+                <v-btn class="primary" color="red" @click="limparFormulario">Limpar Formulário</v-btn>
                 <!-- <v-icon color="blue" large @click="imprimir()">print</v-icon> -->
               </center>
             </v-flex>
@@ -390,47 +385,31 @@
 import http_api from '@/http/api'
 import http_jsreport from '@/http/jsreport'
 import moment from 'moment'
-const helpers = require('../helpers')
-import { mapActions } from 'vuex'
+// const helpers = require('../../helpers')
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data: () => ({
     submitted: false,
     menudata: false,
-    form: {
-      id: '',
-      user_id: '',
-      nome: '',
-      usuario_username: '',
-      email: '',
-      telefone: '',
-      orientador: '',
-      nivel_graduacao: '',
-      data_para_encerramento_conta: '',
-      quantidade_cpus: '',
-      quantidade_nos: '',
-      quantidade_memoria: '',
-      outros_recursos_computacionais: '',
-      // quantidade_jobs: '',
-      softwares_solicitados: '',
-      ferramentas_utilizadas: '',
-      linha_pesquisa: '',
-      titulo_projeto: '',
-      projeto_financiado: false,
-      agencia_financiadora: '',
-      projeto_registrado_ufv: false,
-      tempo_duracao_projeto_pesquisa: '',
-      resumo_objetivo_projeto_pesquisa: '',
-      metodologias_utilizadas: '',
-      outras_informacoes: '',
-    }
   }),
 
   created() {
     document.title = 'CFINEP - Formulario'
+    // console.log('form: ', this.$store.getters['formulario/form'])
+    // console.log('teste formulario: ', this.$store.state)
+    //console.log('ID: ', this.$store.state.formulario)
+    console.log('API_CALL_FORMULARIO: ')
+    this.API_CALL_FORMULARIO()
+    // this.$store.state.formulario.form.id = ''
+    // console.log('token: ', this.$store.getters['auth/token'])
+    //console.log('teste: ', this.$store)
   },
 
   computed: {
+    ... mapGetters('formulario', {
+      form: 'form'
+    }),
     // filterTrabalhosInstituto() {
     //   if (this.filtroTrabalhoInstituto === '') return this.trabalhos
 
@@ -451,14 +430,19 @@ export default {
   },
 
   methods: {
-    ...mapActions('fichas', ['GET_FICHAS_ORAIS_ACT']),
+    ... mapActions('formulario', [
+      'SET_FORMULARIO_ACT', 
+      'UPDATE_FORMULARIO_ACT', 
+      'API_CALL_FORMULARIO', 
+      'RESET_FORMULARIO_ACT']
+    ),
 
     imprimir() {
       window.print()
     },
 
     jsreport() {
-      this.GET_FICHAS_ORAIS_ACT(this.filterTrabalhosInstituto)
+      // this.GET_FICHAS_ORAIS_ACT(this.filterTrabalhosInstituto)
     },
 
     handleSubmit(e) {
@@ -476,8 +460,19 @@ export default {
     },
 
     save() {
-      console.log('form: ', this.form)
+      console.log('SAVE')
+
+      if(this.form.id === '')
+        this.SET_FORMULARIO_ACT().then( _ => { })
+      else
+        this.UPDATE_FORMULARIO_ACT().then( _ => { })
+      // console.log('form: ', this.form)
+    },
+
+    limparFormulario(){
+      this.RESET_FORMULARIO_ACT()
     }
+
   }
 }
 </script>

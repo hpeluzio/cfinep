@@ -19,8 +19,8 @@ Route.delete('/usuario/:id', 'UserController.destroy').middleware('auth:jwt').va
 
 //Rotas do formulario
 Route.get('/formulario', 'FormularioController.index').middleware('auth:jwt')
-Route.post('/formulario', 'FormularioController.store')//.middleware('auth:jwt').validator('AnoStore')
-
+Route.post('/formulario', 'FormularioController.store').middleware('auth:jwt')//.validator('AnoStore')
+Route.put('/formulario/:id', 'FormularioController.update').middleware('auth:jwt')//.validator('AnoUpdate')
 
 //Rotas do Instituto
 // Route.get('/instituto', 'InstitutoController.index').middleware('auth:jwt')
