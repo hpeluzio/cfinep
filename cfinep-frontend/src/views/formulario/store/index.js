@@ -6,7 +6,7 @@ export default {
     
     state: {
         form: {
-            id: '',
+            id: null,
             user_id: '',
             nome: '',
             usuario_username: '',
@@ -23,9 +23,9 @@ export default {
             ferramentas_utilizadas: '',
             linha_pesquisa: '',
             titulo_projeto: '',
-            projeto_financiado: false,
+            projeto_financiado: '',
             agencia_financiadora: '',
-            projeto_registrado_ufv: false,
+            projeto_registrado_ufv: '',
             tempo_duracao_projeto_pesquisa: '',
             resumo_objetivo_projeto_pesquisa: '',
             metodologias_utilizadas: '',
@@ -52,8 +52,8 @@ export default {
         
         RESET_FORMULARIO: (state) => {
 
-            state.form.id = ''
-            state.form.user_id =  ''
+            state.form.id = null
+            state.form.user_id =  null
             state.form.nome =  ''
             state.form.usuario_username =  ''
             state.form.email =  ''
@@ -69,9 +69,9 @@ export default {
             state.form.ferramentas_utilizadas =  ''
             state.form.linha_pesquisa =  ''
             state.form.titulo_projeto =  ''
-            state.form.projeto_financiado =  false
+            state.form.projeto_financiado =  ''
             state.form.agencia_financiadora =  ''
-            state.form.projeto_registrado_ufv =  false
+            state.form.projeto_registrado_ufv =  ''
             state.form.tempo_duracao_projeto_pesquisa =  ''
             state.form.resumo_objetivo_projeto_pesquisa =  ''
             state.form.metodologias_utilizadas =  ''

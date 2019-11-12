@@ -400,7 +400,7 @@ export default {
     // console.log('teste formulario: ', this.$store.state)
     //console.log('ID: ', this.$store.state.formulario)
     console.log('API_CALL_FORMULARIO: ')
-    this.API_CALL_FORMULARIO()
+    //this.API_CALL_FORMULARIO()
     // this.$store.state.formulario.form.id = ''
     // console.log('token: ', this.$store.getters['auth/token'])
     //console.log('teste: ', this.$store)
@@ -446,7 +446,7 @@ export default {
     },
 
     handleSubmit(e) {
-      console.log('form: ', this.form)
+      console.log('form handleSubmit: ', this.form)
       this.submitted = true
       this.$validator.validate().then(valid => {
         if (valid) {
@@ -460,11 +460,11 @@ export default {
     },
 
     save() {
-      console.log('SAVE')
-
-      if(this.form.id === '')
+      // console.log('SAVE')
+      console.log('SAVE FORM', this.$store.state.formulario)
+      if(this.form.id == null)
         this.SET_FORMULARIO_ACT().then( _ => { })
-      else
+      else if (this.form.id !=  null)
         this.UPDATE_FORMULARIO_ACT().then( _ => { })
       // console.log('form: ', this.form)
     },

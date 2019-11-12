@@ -4,8 +4,6 @@ import store from '@/store'
 
 // Containers
 const DefaultContainer = () => import('@/containers/DefaultContainer')
-const DefaultContainerAdmin = () => import('@/containers/DefaultContainerAdmin')
-const DefaultContainerNotLogged = () => import('@/containers/DefaultContainerNotLogged')
 
 // CFINEP
 //admin
@@ -22,7 +20,7 @@ const UsoDoAmbiente = () => import('@/views/UsoDoAmbiente')
 const Formulario = () => import('@/views/formulario/Formulario')
 
 //Fichas
-const FichasOrais = () => import('@/views/fichas/FichasOrais')
+// const FichasOrais = () => import('@/views/fichas/FichasOrais')
 
 //Auth
 const Login = () => import('@/views/auth/Login')
@@ -45,9 +43,9 @@ const router = new Router({
     },
     {
       path: '/',
-      redirect: '/login',
+      redirect: 'Infos',
       name: 'Autenticação',
-      component: DefaultContainerNotLogged,
+      component: DefaultContainer,
       children: [
         {
           path: 'register',
@@ -63,7 +61,25 @@ const router = new Router({
           path: 'page404',
           name: 'Page404',
           component: Page404,
+        },
+        {
+          path: 'infos',
+          name: 'Infos',
+          component: Infos,
+          meta: { requiresAuth: false, adminAuth: false, userAuth: false },
+        },
+        {
+          path: 'politicadeuso',
+          name: 'PoliticaDeUso',
+          component: Politica,
+          meta: { requiresAuth: false, adminAuth: false, userAuth: false },
         },        
+        {
+          path: 'usodoambiente',
+          name: 'UsoDoAmbiente',
+          component: UsoDoAmbiente,
+          meta: { requiresAuth: false, adminAuth: false, userAuth: false },
+        },     
       ]
     },
 
@@ -72,7 +88,7 @@ const router = new Router({
       path: '/',
       redirect: '/admin',
       name: '',
-      component: DefaultContainerAdmin,
+      component: DefaultContainer,
       meta: { requiresAuth: true, adminAuth: true, userAuth: false },
       children: [
         {
@@ -93,7 +109,7 @@ const router = new Router({
       path: '/admin',
       redirect: '/admin',
       name: 'Admin',
-      component: DefaultContainerAdmin,
+      component: DefaultContainer,
       meta: { requiresAuth: true, adminAuth: true, userAuth: false },
       children: [
         {
@@ -103,12 +119,12 @@ const router = new Router({
           meta: { requiresAuth: true, adminAuth: false, userAuth: false },
         },  
         //Fichas
-        {
-          path: '/admin/fichas_orais',
-          name: 'Administrador / Fichas de Trabalhos Orais',
-          component: FichasOrais,
-          meta: { requiresAuth: true, adminAuth: true, userAuth: false },
-        },
+        // {
+        //   path: '/admin/fichas_orais',
+        //   name: 'Administrador / Fichas de Trabalhos Orais',
+        //   component: FichasOrais,
+        //   meta: { requiresAuth: true, adminAuth: true, userAuth: false },
+        // },
  
       ]
     },
@@ -126,8 +142,7 @@ const router = new Router({
           //name: 'Home',
           component: Home,
           meta: { requiresAuth: true, adminAuth: false, userAuth: true },
-        },
-      ]
+        },      ]
     },
     
     {
@@ -144,36 +159,18 @@ const router = new Router({
           meta: { requiresAuth: true, adminAuth: false, userAuth: false },
         },
         {
-          path: 'infos',
-          name: 'Infos',
-          component: Infos,
-          meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-        },
-        {
-          path: 'politicadeuso',
-          name: 'PoliticaDeUso',
-          component: Politica,
-          meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-        },        
-        {
-          path: 'usodoambiente',
-          name: 'UsoDoAmbiente',
-          component: UsoDoAmbiente,
-          meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-        },
-        {
           path: 'formulario',
           name: 'Formulario',
           component: Formulario,
           meta: { requiresAuth: true, adminAuth: false, userAuth: false },
         },
         //Fichas
-        {
-          path: 'fichas_orais',
-          name: 'Fichas de Trabalhos Orais',
-          component: FichasOrais,
-          meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-        },                           
+        // {
+        //   path: 'fichas_orais',
+        //   name: 'Fichas de Trabalhos Orais',
+        //   component: FichasOrais,
+        //   meta: { requiresAuth: true, adminAuth: false, userAuth: false },
+        // },                           
       ]
     },
   ]

@@ -23,6 +23,7 @@ class FormularioController {
 
     async store ({ request, response, auth }) {
 
+        console.log('request.all()', request.all())
         // console.log('requestall', request.all())
         // console.log('------------------------------')
         // console.log('------------------------------')

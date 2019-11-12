@@ -12,9 +12,16 @@ const pluginLocalStorage = store => {
       console.log('mutation.type: ', mutation.type)
       ls.set('state', state)
 
+      //Sempre que logar atualizar o formulário
+      if(mutation.type ==  'auth/SET_LOGAR')
+        store.dispatch('formulario/API_CALL_FORMULARIO')
+
       //Sempre que deslogar resetar o formulário
       if(mutation.type ==  'auth/SET_DESLOGAR')
         store.dispatch('formulario/RESET_FORMULARIO_ACT')
+
+
+
     //   ls.set('auth', state.auth)
     })
   }
