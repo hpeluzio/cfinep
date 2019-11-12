@@ -1,17 +1,17 @@
 {
     "name": "styles.css",
     "creationDate": {
-        "$$date": 1568640418327
+        "$$date": 1573586760024
     },
     "modificationDate": {
-        "$$date": 1568640418328
+        "$$date": 1573586760024
     },
-    "folder": {
-        "shortid": "Je_zuS3"
-    },
-    "_id": "s7FhXQwbMhWudR4k",
-    "shortid": "Yiks4Fp",
     "inheritedReadPermissions": [],
     "inheritedEditPermissions": [],
+    "folder": {
+        "shortid": "UcAegzL"
+    },
+    "_id": "7yZamckP6Dfb78fk",
+    "shortid": "JH6ymAR",
     "$entitySet": "assets"
 }

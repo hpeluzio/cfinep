@@ -60,7 +60,7 @@
 
 .apresentacao {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .conteudo1 {
@@ -86,16 +86,4 @@
 /* Padding de algumas tabelas TDs */
 .padding{
   padding: 10px;
-}
-
-
-/* TrabalhosPorInsituto por instituto */
-.fontTrabalhos{
-  font-size: 18px;
-}
-
-
-/* Avaliadores por instituto */
-.fontAvaliadores{
-  font-size: 18px;
 }

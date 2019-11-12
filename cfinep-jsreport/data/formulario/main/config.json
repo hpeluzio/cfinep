@@ -1,24 +1,24 @@
 {
-    "folder": {
-        "shortid": "Je_zuS3"
-    },
-    "shortid": "S1e_9nhULS",
     "name": "main",
     "recipe": "chrome-pdf",
     "engine": "handlebars",
     "chrome": {
         "printBackground": true,
         "marginTop": "2.5cm",
-        "marginBottom": "2.5cm",
         "marginRight": "1.5cm",
+        "marginBottom": "2.5cm",
         "marginLeft": "1.5cm"
     },
-    "creationDate": "2019-09-11T18:27:39.294Z",
+    "creationDate": "2019-11-12T19:25:55.197Z",
     "modificationDate": {
-        "$$date": 1569870196455
+        "$$date": 1573590382717
     },
     "inheritedReadPermissions": [],
     "inheritedEditPermissions": [],
-    "_id": "kYOjbKS6VEyUPzhK",
+    "folder": {
+        "shortid": "UcAegzL"
+    },
+    "_id": "WZykGff92uj3GXq4",
+    "shortid": "mbdKMzD",
     "$entitySet": "templates"
 }

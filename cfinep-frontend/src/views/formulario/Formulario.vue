@@ -366,7 +366,7 @@
             <v-flex xs12 sm12 md12>
               <center>
                 <v-btn class="primary" color="blue" @click="handleSubmit">Salvar Formulário</v-btn>
-                <v-btn class="primary" color="black" @click="handleSubmit">
+                <v-btn class="primary" color="black" @click="jsreport">
                   Baixar Formulário em PDF
                   <v-icon color="white" large @click="jsreport()">archive</v-icon>
                 </v-btn>
@@ -431,10 +431,12 @@ export default {
 
   methods: {
     ... mapActions('formulario', [
-      'SET_FORMULARIO_ACT', 
-      'UPDATE_FORMULARIO_ACT', 
-      'API_CALL_FORMULARIO', 
-      'RESET_FORMULARIO_ACT']
+        'SET_FORMULARIO_ACT', 
+        'UPDATE_FORMULARIO_ACT', 
+        'API_CALL_FORMULARIO', 
+        'RESET_FORMULARIO_ACT',
+        'GET_FORMULARIO_PDF_ACT'
+      ]
     ),
 
     imprimir() {
@@ -442,7 +444,7 @@ export default {
     },
 
     jsreport() {
-      // this.GET_FICHAS_ORAIS_ACT(this.filterTrabalhosInstituto)
+      this.GET_FORMULARIO_PDF_ACT(this.form)
     },
 
     handleSubmit(e) {

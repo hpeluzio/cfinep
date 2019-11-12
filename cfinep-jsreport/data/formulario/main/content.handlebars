@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <style>
+            
+            {#asset styles.css @encoding=utf8}
+            {#asset bootstrap.min.css @encoding=utf8}
+        </style>
+    </head>
+
+<body>
+    {{#each formulario}}
+    <div class="div-body pagebreak">
+
+          <table border="0" >
+            <tbody>
+              <tr>
+                <td class="sialogo" style="width:20%;">
+                  <img
+                    src="{#asset ufv-logo.png @encoding=dataURI}"
+                    alt="UFV-logo"
+                    style="width:80px"
+                  />
+                  
+                </td>
+                <td class="ufv" colspan="3">
+                  UNIVERSIDADE FEDERAL DE VIÇOSA<br />
+                  CAMPUS RIO PARANAÍBA<br />
+                  CLUSTER FINEP<br />
+                  
+                </td>
+            </tbody>
+          </table>
+
+
+                <table border="0" >
+                  <tbody>
+                      <tr>
+                        <table border="1" >
+                          <tbody>
+
+                              <tr>
+                                  <td class="conteudo1" style="width:8%;"><span>Nome:</span></td>
+                                  <td colspan="3" class="conteudo2">{{ nome }}</td>
+                                  <td class="conteudo1" style="width:8%;"><span>Username:</span></td>
+                                  <td colspan="3" class="conteudo2">{{ usuario_username }}</td>
+                                  <td class="conteudo1" style="width:8%;"><span>E-mail:</span></td>
+                                  <td colspan="3" class="conteudo2">{{ email }}</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </tr>
+
+                      <tr>
+                        <table border="1" >
+                          <tbody>
+
+                              <tr>
+                                  <td class="conteudo1" style="width:8%;"><span>Telefone:</span></td>
+                                  <td colspan="3" class="conteudo2">{{ telefone }}</td>
+                                  <td class="conteudo1" style="width:8%;"><span>Nome do Orientador:</span></td>
+                                  <td colspan="3" class="conteudo2">{{ orientador }}</td>
+                                  <td class="conteudo1" style="width:8%;"><span>Nível (IC, Mestrado, doutorado)/Programa:</span></td>
+                                  <td colspan="3" class="conteudo2">{{ nivel_graduacao }}</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </tr>
+
+                      <tr>
+                          <table border="1" >
+                            <tbody>
+                                <tr>
+                                    <td class="conteudo1" style="width:20%;"><span>Data prevista de encerramento da conta:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ data_para_encerramento_conta }}</td>
+                                    <td class="conteudo1" style="width:20%;"><span>Quantidade de CPUs que pretende utilizar:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ quantidade_cpus }}</td>
+                                    <td class="conteudo1" style="width:20%;"><span>Quantidade de NÓS que pretende utilizar:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ quantidade_nos }}</td>
+                                    <td class="conteudo1" style="width:20%;"><span>Quantidade de MEMÓRIA que pretende utilizar:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ quantidade_memoria }}</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                      </tr>
+
+                      <tr>
+                          <table border="1" >
+                            <tbody>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Recursos computacionais a serem utilizados:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ outros_recursos_computacionais }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Softwares a serem utilizados ou solicitados para instalação:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ softwares_solicitados }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Ferramentas/linguagens utilizadas:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ ferramentas_utilizadas }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Linha de Pesquisa:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ linha_pesquisa }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Título do Projeto</span></td>
+                                    <td colspan="3" class="conteudo2">{{ titulo_projeto }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Projeto Financiado</span></td>
+                                    <td colspan="3" class="conteudo2">{{ agencia_financiadora }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Projeto Registrado na UFV:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ projeto_registrado_ufv }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Tempo de duração do projeto de pesquisa:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ tempo_duracao_projeto_pesquisa }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Resumo/Objetivo do projeto de pesquisa:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ resumo_objetivo_projeto_pesquisa }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Metodologias utilizadas:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ metodologias_utilizadas }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="conteudo1" style="width:25%;"><span>Outras Informações:</span></td>
+                                    <td colspan="3" class="conteudo2">{{ outras_informacoes }}</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                      </tr>
+
+                  </tbody>
+                </table>
+
+                {{!-- <div class="conteudo1">
+                  <br />
+                  <p>NOME ( LEGÍVEL) DO AVALIADOR: __________________________________________</p>
+                  <p>MATRÍCULA UFV DO AVALIADOR: ________________</p>
+                </div>
+                <div class="conteudo1" style="text-align:center">
+                  <p>_______________________________________________________</p>
+                  <p>Assinatura do Avaliador</p>
+                </div>  --}}
+    </div>
+
+    {{/each}}     
+</body>
+
+</html>
