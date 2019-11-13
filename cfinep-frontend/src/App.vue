@@ -19,11 +19,13 @@ export default {
     logado(newValue, oldValue) {
       if(newValue === false)
         this.$router.push({ name: 'Login' })
+
       if(newValue === true){
-        if(this.$store.getters['auth/permission'] === 'admin')
-          this.$router.push({ name: 'Admin' })
-        else
-          this.$router.push({ name: 'Home' })
+        this.$router.push({ name: 'Home' })
+        // if(this.$store.getters['auth/permission'] === 'admin')
+        //   this.$router.push({ name: 'Admin' })
+        // else
+        //   this.$router.push({ name: 'Home' })
       }
     }
   },

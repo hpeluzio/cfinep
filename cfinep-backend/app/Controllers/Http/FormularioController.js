@@ -21,6 +21,10 @@ class FormularioController {
         //return await Formulario.all()
     }
 
+    async formulario_all ({ request, response, view, auth }) {
+        return await Formulario.all()
+    }    
+
     async store ({ request, response, auth }) {
 
         console.log('request.all()', request.all())

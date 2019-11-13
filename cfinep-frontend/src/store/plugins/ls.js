@@ -1,7 +1,7 @@
 import ls from 'local-storage'
 
 const pluginLocalStorage = store => {
-    console.log('STORE INIT')
+    //console.log('STORE INIT')
     
     //store.dispatch('produtos/API_CALL_ACT')
     store.commit('EVENT_LISTENER');
@@ -9,7 +9,7 @@ const pluginLocalStorage = store => {
 
 
     store.subscribe((mutation, state) => {
-      console.log('mutation.type: ', mutation.type)
+      //console.log('mutation.type: ', mutation.type)
       ls.set('state', state)
 
       //Sempre que logar atualizar o formulário

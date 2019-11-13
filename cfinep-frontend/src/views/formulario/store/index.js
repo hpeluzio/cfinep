@@ -30,11 +30,13 @@ export default {
             resumo_objetivo_projeto_pesquisa: '',
             metodologias_utilizadas: '',
             outras_informacoes: '',
-        }
+        },
+        formularios: []
     },
 
     getters: {
         form: state => state.form,
+        formularios: state => state.formularios,
         // logado: state => state.logado,
         // token: state => state.token,
         // name: state => state.name,
@@ -51,7 +53,6 @@ export default {
         },
         
         RESET_FORMULARIO: (state) => {
-
             state.form.id = null
             state.form.user_id =  null
             state.form.nome =  ''
@@ -88,9 +89,9 @@ export default {
                     url: '/formulario/',
                 })   
                 .then(response => {
-                    console.log('response: ', response.data)
+                    //console.log('response: ', response.data)
                     context.state.form = Object.assign({}, response.data)
-                    console.log('context.state.form: ',context.state.form)
+                    //console.log('context.state.form: ',context.state.form)
                     // context.state.form.id = response.data.id
                     //context.commit('SET_FORMULARIO_ID', response.data.id)
                     //alert('Formulário inserido com sucesso.')               
@@ -199,7 +200,7 @@ export default {
         },
 
         RESET_FORMULARIO_ACT: (context) => {
-            console.log('RESET_FORMULARIO_ACT')
+            //console.log('RESET_FORMULARIO_ACT')
             context.commit('RESET_FORMULARIO')
         },
 
@@ -207,9 +208,6 @@ export default {
 
             var array = []
             array.push(payload)
-
-            console.log('array', array)
-            console.log('payload', payload)
 
             const data = {"template":{"shortid":"mbdKMzD"},"data":{"formulario": array}}
 
@@ -238,6 +236,29 @@ export default {
               console.log(error);
             }); 
         },
+
+        GET_FORMULARIO_ALL_ACT: (context, payload) => {
+            return new Promise((resolve, reject) => {
+                http({
+                    method: 'get',
+                    url: '/formulario_all/',
+                })   
+                .then(response => {
+                    context.state.formularios = response.data
+                    // console.log('response: ', response.data)
+                    // context.state.form = Object.assign({}, response.data)
+                    // console.log('context.state.form: ',context.state.form)
+                    // context.state.form.id = response.data.id
+                    //context.commit('SET_FORMULARIO_ID', response.data.id)
+                    //alert('Formulário inserido com sucesso.')               
+                    resolve(response)
+                })
+                .catch(error => {
+                console.log(error)
+                reject(error)
+                });
+            })
+        },        
        
     }
 

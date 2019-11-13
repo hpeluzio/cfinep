@@ -106,7 +106,7 @@ export default {
   },
 
   created() {
-    document.title = "SIA - Register";
+    document.title = "CFINEP - Registrar";
   },  
 
   methods: {

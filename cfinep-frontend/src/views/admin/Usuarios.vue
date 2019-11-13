@@ -171,7 +171,7 @@ export default {
     },
 
     created () {
-      document.title = "SIA - Usuários"
+      document.title = "CFINEP - Usuários"
       //Pegando todos usuarios 
       this.getAxiosArrayUsuarios()
       //Setando array de permissoes

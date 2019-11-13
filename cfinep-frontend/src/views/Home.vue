@@ -7,7 +7,7 @@
           
           <v-flex d-flex xs12 sm6 md6>
               <b-card-body>
-                <h1>CLUSTER<strong>FINEP</strong></h1> 
+                <h1>CLUSTER<strong>FINEP</strong> <span v-if="isAdmin"> - ADMIN</span></h1> 
                 <p class="text-muted">Sistema para controle e acesso do cluster finep na UFV</p>
               </b-card-body>            
           </v-flex>
@@ -52,10 +52,20 @@ export default {
   }),
 
   created() {
-    document.title = "SIA - Home"    
+    document.title = "CFINEP - Home"    
   },
 
-  //methods
+  computed: {
+
+    isAdmin () {
+      if(this.$store.getters['auth/permission'] === 'admin')
+        return true
+      else 
+        return false
+    },
+
+  },
+
   methods: {
   }
 }

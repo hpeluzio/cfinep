@@ -399,7 +399,7 @@ export default {
     // console.log('form: ', this.$store.getters['formulario/form'])
     // console.log('teste formulario: ', this.$store.state)
     //console.log('ID: ', this.$store.state.formulario)
-    console.log('API_CALL_FORMULARIO: ')
+    // console.log('API_CALL_FORMULARIO: ')
     //this.API_CALL_FORMULARIO()
     // this.$store.state.formulario.form.id = ''
     // console.log('token: ', this.$store.getters['auth/token'])

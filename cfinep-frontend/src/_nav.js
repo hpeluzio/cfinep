@@ -11,7 +11,7 @@ export default {
     // },    
     {
       name: 'Home',
-      url: '/admin',
+      url: '/home',
       icon: 'icon-home',
     },
 
@@ -146,7 +146,7 @@ export default {
 
     {
       name: 'Imprimir Formulário',
-      url: '/fichas_orais',
+      url: '/formulario_grid',
       icon: 'cui-print'
 
     },
