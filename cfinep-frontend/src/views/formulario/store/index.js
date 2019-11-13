@@ -1,57 +1,29 @@
 import http from '@/http/api'
 import http_jsreport from '@/http/jsreport'
+import frm from '../form'
 
 export default {
     namespaced: true,
     
     state: {
-        form: {
-            id: null,
-            user_id: '',
-            nome: '',
-            usuario_username: '',
-            email: '',
-            telefone: '',
-            orientador: '',
-            nivel_graduacao: '',
-            data_para_encerramento_conta: '',
-            quantidade_cpus: '',
-            quantidade_nos: '',
-            quantidade_memoria: '',
-            outros_recursos_computacionais: '',
-            softwares_solicitados: '',
-            ferramentas_utilizadas: '',
-            linha_pesquisa: '',
-            titulo_projeto: '',
-            projeto_financiado: '',
-            agencia_financiadora: '',
-            projeto_registrado_ufv: '',
-            tempo_duracao_projeto_pesquisa: '',
-            resumo_objetivo_projeto_pesquisa: '',
-            metodologias_utilizadas: '',
-            outras_informacoes: '',
-        },
-        formularios: []
+        form: frm,
+        formularios: [],
     },
 
     getters: {
         form: state => state.form,
         formularios: state => state.formularios,
-        // logado: state => state.logado,
-        // token: state => state.token,
-        // name: state => state.name,
-        // email: state => state.email,
-        // permission: state => state.permission,
-        // id: state => state.id,
-        // created_at: state => state.created_at,
-        // updated_at: state => state.updated_at
     }, 
 
     mutations: {
+        SET_FORM: (state, payload) => {
+            state.form = payload
+        },
+
         SET_FORMULARIO_ID: (state, payload) => {
             state.form.id = payload
         },
-        
+       
         RESET_FORMULARIO: (state) => {
             state.form.id = null
             state.form.user_id =  null
@@ -206,10 +178,15 @@ export default {
 
         GET_FORMULARIO_PDF_ACT(context, payload) {
 
-            var array = []
-            array.push(payload)
+            var pdf_form_array = []
 
-            const data = {"template":{"shortid":"mbdKMzD"},"data":{"formulario": array}}
+            if(!payload)
+                pdf_form_array.push(context.state.form)
+            else   
+                pdf_form_array = context.state.formularios
+
+            const data = {"template":{"shortid":"mbdKMzD"},"data":{ "formulario": pdf_form_array }}
+        
 
             http_jsreport.post(process.env.VUE_APP_API_JSREPORT_URL, data, {
                 responseType: 'arraybuffer',
@@ -258,7 +235,8 @@ export default {
                 reject(error)
                 });
             })
-        },        
+        },  
+
        
     }
 

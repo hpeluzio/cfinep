@@ -36,8 +36,9 @@
         <!--<td>{{ props.item.name }}</td>-->
         <td class="text-xs-left">{{ props.item.id }}</td>
         <td class="text-xs-left">{{ props.item.nome }}</td>
+        <td class="text-xs-left">{{ props.item.usuario_username }}</td>
         <td class="text-xs-left">{{ props.item.email }}</td>
-        <td class="text-xs-left layout px-2">
+        <td class="text-xs-left layout px-4">
           <v-icon
             small
             class="mr-2"
@@ -51,18 +52,25 @@
           >
             delete
           </v-icon>
-          <v-icon
-            small
-            @click="ativarAvaliador(props.item)"
-          >
-            done_outline
-          </v-icon>          
+        
         </td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
         <div style="color: red">Sua procura por <strong>"{{ search }}"</strong> não achou resultados.</div>
       </v-alert>
     </v-data-table>
+    <v-flex xs12 sm12 md12>
+      <center>
+        <!-- <v-btn class="primary" color="blue" @click="handleSubmit">Salvar Formulário</v-btn> -->
+        <v-btn class="primary" color="black" @click="jsreport">
+          
+          <v-icon color="white" large @click="jsreport()">archive</v-icon>
+             Baixar todos os Formulários em PDF
+        </v-btn>
+        <!-- <v-btn class="primary" color="red" @click="limparFormulario">Limpar Formulário</v-btn> -->
+        <!-- <v-icon color="blue" large @click="imprimir()">print</v-icon> -->
+      </center>
+    </v-flex>
   </div>
   <!-- Data Table -->
   </div>
@@ -80,20 +88,10 @@ export default {
       headers: [
         { text: 'ID', value: 'id' },
         { text: 'Nome', value: 'nome' },
+        { text: 'Username', value: 'usuario_username' },
         { text: 'E-mail', value: 'email' },
         { text: 'Ações', value: 'name', sortable: false }
       ],
-      //formularios: [],
-      editedItem: {
-        id: '',
-        nome: '',
-        email: '',
-      },
-      defaultItem: {
-        id: '',
-        nome: '',
-        email: '',
-      },
       rowsPerPageItems: [10, 20, 50, 100],
       pagination: {
           rowsPerPage: 10
@@ -112,59 +110,46 @@ export default {
 
     created () {
       document.title = "CFINEP - Formulários"
-      //Pegando todos Formularios
-      // this.getAxiosArrayFormularios()
+      //Atualizando o estado dos formularios
       this.GET_FORMULARIO_ALL_ACT()
     },
 
     //methods
     methods: {
       ... mapActions('formulario', [
-          'GET_FORMULARIO_ALL_ACT'
+          'GET_FORMULARIO_ALL_ACT',
+          'GET_FORMULARIO_PDF_ACT'
         ]
       ),
 
-      getAxiosArrayFormularios() {
-        //Pegando todos formularios 
-        http_api({
-            method:'get',
-            url: '/formulario_all'
-        })
-        .then(response => {
-          
-          this.$store.state.formulario.formularios = response.data
-          console.log('formsss: ', this.formularios)
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+      jsreport() {
+        this.GET_FORMULARIO_PDF_ACT(true)
       },
 
+      // getAxiosArrayFormularios() {
+      //   //Pegando todos formularios 
+      //   http_api({
+      //       method:'get',
+      //       url: '/formulario_all'
+      //   })
+      //   .then(response => {
+          
+      //     this.$store.state.formulario.formularios = response.data
+      //     console.log('formsss: ', this.formularios)
+      //   })
+      //   .catch((error) => {
+      //       console.log(error);
+      //   });
+      // },
+
       editItem (item) {
-        console.log('item: ', item)
-        // this.editedIndex = this.formularios.indexOf(item)
-        // this.editedItem = Object.assign({}, item)
-        // this.dialog = true
+        this.$router.push({ path: `/admin/edit_form/${item.id}` })
       },
 
       deleteItem (item) {
-        //Setando algumas variaveis para uso do delete
-        const index = this.formularios.indexOf(item)
-
-        // Confirmando && enviando o ... as duas linhas abaixo estão atreladas
-        confirm('Está certo que deseja deletar este item?') &&
-        http_api({
-            method: 'delete',
-            url: '/avaliador/'+ item.id +'',
-          })
-          .then(response => {
-            this.getAxiosArrayformularios()
-          })
-          .catch((error) => {
-            this.errors.add({ field: 'defaulterror2', msg: 'Erro ao deletar item' })
-          })
 
       },
+
       // //Custom filter da datatable
       // customFilter(items, search, filter, headers) {
       //   //Normalizando a search

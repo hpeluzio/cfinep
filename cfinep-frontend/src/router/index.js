@@ -18,6 +18,7 @@ const Politica = () => import('@/views/Politica')
 const UsoDoAmbiente = () => import('@/views/UsoDoAmbiente')
 const Formulario = () => import('@/views/formulario/Formulario')
 const FormularioGrid = () => import('@/views/formulario/FormularioGrid')
+const FormularioEdit = () => import('@/views/formulario/FormularioEdit')
 
 //Fichas
 // const FichasOrais = () => import('@/views/fichas/FichasOrais')
@@ -37,10 +38,28 @@ const router = new Router({
   linkActiveClass: 'open active',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
+    
+    //Notfound
+    // {
+    //   path: '*',
+    //   redirect: '/Page404'
+    // },
+
     {
-      path: '*',
-      redirect: '/Page404'
-    },
+      path: '/',
+      redirect: 'Home',
+      name: 'Not Found',
+      component: DefaultContainer,
+      children: [
+        {
+          path: 'page404',
+          name: 'Page404',
+          component: Page404,
+        },
+      ]
+    }, 
+    
+    //Autenticacao
     {
       path: '/',
       redirect: 'Infos',
@@ -57,11 +76,15 @@ const router = new Router({
           name: 'Login',
           component: Login,
         },
-        {
-          path: 'page404',
-          name: 'Page404',
-          component: Page404,
-        },
+      ]
+    },
+
+    {
+      path: '/',
+      redirect: 'Infos',
+      name: 'Cluster',
+      component: DefaultContainer,
+      children: [
         {
           path: 'infos',
           name: 'Infos',
@@ -81,19 +104,19 @@ const router = new Router({
           meta: { requiresAuth: false, adminAuth: false, userAuth: false },
         },     
       ]
-    },
+    },    
 
     //User permission
     {
       path: '/',
       redirect: '/home',
-      name: 'Home',
+      name: 'Usuário',
       component: DefaultContainer,
       meta: { requiresAuth: true, adminAuth: false, userAuth: true },
       children: [
         {
           path: 'home',
-          //name: 'Home',
+          name: 'Home',
           component: Home,
           meta: { requiresAuth: true, adminAuth: false, userAuth: false },
         },
@@ -122,88 +145,36 @@ const router = new Router({
     {
       path: '/',
       redirect: '/home',
-      name: '',
+      name: 'Admin',
       component: DefaultContainer,
       meta: { requiresAuth: true, adminAuth: true, userAuth: false },
       children: [
-        // {
-        //   path: 'admin',
-        //   name: 'Admin / Home',
-        //   component: Admin,
-        //   meta: { requiresAuth: true, adminAuth: true, userAuth: false },
-        // },
         {
           path: '/admin/usuarios',
-          name: 'Admin / Usuários',
+          name: 'Usuários',
           component: AdminUsuarios,
           meta: { requiresAuth: true, adminAuth: true, userAuth: false },
         },
+        {
+          path: '/admin/edit_form/:id',
+          name: 'Edit Form',
+          component: FormularioEdit,
+          meta: { requiresAuth: true, adminAuth: true, userAuth: false },
+        },        
       ]
     },
-    // {
-    //   path: '/admin',
-    //   redirect: '/admin',
-    //   name: 'Admin',
-    //   component: DefaultContainer,
-    //   meta: { requiresAuth: true, adminAuth: true, userAuth: false },
-    //   children: [
-    //     {
-    //       path: '/meusdados',
-    //       name: 'Administrador / Meus Dados',
-    //       component: MeusDados,
-    //       meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-    //     },  
-    //   ]
-    // },
-
-    
-    // {
-    //   path: '/',
-    //   redirect: '/home',
-    //   name: 'Relatorios',
-    //   component: DefaultContainer,
-    //   meta: { requiresAuth: true, adminAuth: false, userAuth: true },
-    //   children: [
-    //     {
-    //       path: 'meusdados',
-    //       name: 'Meus Dados',
-    //       component: MeusDados,
-    //       meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-    //     },
-    //     {
-    //       path: 'formulario',
-    //       name: 'Formulario',
-    //       component: Formulario,
-    //       meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-    //     },
-    //     //Fichas
-    //     // {
-    //     //   path: 'fichas_orais',
-    //     //   name: 'Fichas de Trabalhos Orais',
-    //     //   component: FichasOrais,
-    //     //   meta: { requiresAuth: true, adminAuth: false, userAuth: false },
-    //     // },                           
-    //   ]
-    // },
   ]
 })
 
 // Middleware de autenticação para as rotas
 router.beforeEach((to, from, next) => {
-  //Next é para onde está indo e from é de onde veio
-  // //Se precisar de autenticacao e nao tiver sessao ja manda logo pra pagina de login
-  //console.log('to:::::::::::', to)
-  // console.log(from)
+  
   if((to.name === 'Login' || to.name === 'Register') && store.getters['auth/logado'] === true){
     if(store.getters['auth/permission']=== 'admin')
       next({ path: '/admin' })
     else
       next({ path: '/home' })
   }
-
-  // if(to.name === 'Home' && store.getters['auth/permission'] === admin){
-  //     next({ path: '/admin' })
-  // }  
 
   if(to.meta.requiresAuth ){
     //const authUser = JSON.parse(localStorage.getItem('user'))
@@ -235,11 +206,6 @@ router.beforeEach((to, from, next) => {
   else
     next()
 
-  //Antigo
-  // if(to.matched.some(record => record.meta.requiresAuth) && sessionStorage.getItem('user') == null) {
-  //   //console.log("to.matched.some")
-  //   next({ name: 'Login' })
-  // }
 })
 
 export default router

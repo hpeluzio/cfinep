@@ -4,13 +4,11 @@
     <div data-app="true">
       <v-container grid-list-md fluid>
         <v-card flat class="noprint">
+          <!-- FORM -->
+          <!-- nome -->
           <v-card-text>
-            <h4>FORMULÁRIO: <span style="color:blue;"><b>{{ form.nome }}</b></span></h4>
-            <p
-              class="text-muted"
-            >A partir desse formulário será avaliado a criação ou não do usuário no cluster 
-              de acordo com as políticas de uso do mesmo.
-            </p>          
+            <h4>EDIÇÃO DO FORMULÁRIO DO: <span style="color:blue;"><b>{{ form.nome }}</b></span></h4>
+
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md4>
@@ -194,7 +192,6 @@
                 <!-- outros_recursos_computacionais -->
                 <v-flex xs12 sm12 md12>
                   <v-textarea
-                  
                     outline
                     v-model="form.outros_recursos_computacionais"
                     label="Outros recursos computacionais a serem utilizados"
@@ -343,11 +340,7 @@
 
                 <!-- outras_informacoes -->
                 <v-flex xs12 sm12 md12>
-                  <v-textarea
-                    outline
-                    v-model="form.outras_informacoes"
-                    label="Outras Informações"
-                  ></v-textarea>
+                  <v-textarea outline v-model="form.outras_informacoes" label="Outras Informações"></v-textarea>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -384,24 +377,27 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data: () => ({
     submitted: false,
-    menudata: false,
+    menudata: false
   }),
 
   created() {
     document.title = 'CFINEP - Formulario'
-    //Atualizando o estado dos formularios
-    this.API_CALL_FORMULARIO()
-    
-    //Pegando o formulario do usuario atual se existir
-    var form_do_usuario = this.$store.state.formulario.formularios.find( item => {
-      if (item.user_id == this.$store.state.auth.id)
-        return item
-    })
 
-    this.form = Object.assign(this.form, form_do_usuario)
+    //Pegando o formulario da ID atual
+    var form_a_ser_editado = this.$store.state.formulario.formularios.find(
+      item => {
+        if (item.id == this.$route.params.id) return item
+      }
+    )
+
+    this.form = Object.assign(this.form, form_a_ser_editado)
   },
 
   computed: {
+    // ... mapGetters('formulario', {
+    //   form: 'form'
+    // }),
+
     form: {
       get () {
         return this.$store.state.formulario.form
@@ -410,16 +406,11 @@ export default {
         this.$store.commit('formulario/SET_FORM', value)
       }
     },
-    // filterTrabalhosInstituto() {
-    //   if (this.filtroTrabalhoInstituto === '') return this.trabalhos
 
-    //   if (this.filtroTrabalhoInstituto !== '') {
-    //     return this.trabalhos.filter(trabalho => {
-    //       if (this.filtroTrabalhoInstituto == trabalho.instituto)
-    //         return trabalho
-    //     })
-    //   }
-    // },
+    params() {
+      return this.$route.params
+    },
+
     computedDateFormattedMomentjs() {
       return this.form.data_para_encerramento_conta
         ? moment
@@ -430,14 +421,14 @@ export default {
   },
 
   methods: {
-    ... mapActions('formulario', [
-        'SET_FORMULARIO_ACT', 
-        'UPDATE_FORMULARIO_ACT', 
-        'API_CALL_FORMULARIO', 
-        'RESET_FORMULARIO_ACT',
-        'GET_FORMULARIO_PDF_ACT'
-      ]
-    ),
+    ...mapActions('formulario', [
+      'SET_FORM',
+      'SET_FORMULARIO_ACT',
+      'UPDATE_FORMULARIO_ACT',
+      'API_CALL_FORMULARIO',
+      'RESET_FORMULARIO_ACT',
+      'GET_FORMULARIO_PDF_ACT'
+    ]),
 
     imprimir() {
       window.print()
@@ -462,23 +453,18 @@ export default {
     },
 
     save() {
-      // console.log('SAVE')
-      console.log('SAVE FORM', this.$store.state.formulario)
-      if(this.form.id == null)
-        this.SET_FORMULARIO_ACT().then( _ => { })
-      else if (this.form.id !=  null)
-        this.UPDATE_FORMULARIO_ACT().then( _ => { })
-      // console.log('form: ', this.form)
+      //console.log('SAVE FORM', this.$store.state.formulario)
+      if (this.form.id == null) this.SET_FORMULARIO_ACT().then(_ => {})
+      else if (this.form.id != null) this.UPDATE_FORMULARIO_ACT().then(_ => {})
     },
 
-    limparFormulario(){
+    limparFormulario() {
       this.RESET_FORMULARIO_ACT()
     }
-
   }
 }
 </script>
 
 <style>
-
 </style>
+
