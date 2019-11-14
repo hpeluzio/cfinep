@@ -27,7 +27,7 @@
           <i class="icon-location-pin"></i>
         </b-nav-item>-->
         <b-nav-item class="px-3" v-if="isLogged" to="/meusdados">{{ email }}</b-nav-item>
-        <b-nav-item class="px-3" v-if="!isLogged" to="/register" exact>Register</b-nav-item>
+        <b-nav-item class="px-3" v-if="!isLogged" to="/register" exact>Registrar</b-nav-item>
         <b-nav-item class="px-3" v-if="!isLogged" to="/login" exact>Login</b-nav-item>        
         <DefaultHeaderDropdownAccnt  v-if="isLogged"/>
       </b-navbar-nav>

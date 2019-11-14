@@ -44,79 +44,6 @@ export default {
     },
 
 
-    // {
-    //   name: 'Anos',
-    //   url: '/anos',
-    //   icon: 'icon-calendar'
-    // },
-    // {
-    //   name: 'Salas',
-    //   url: '/salas',
-    //   icon: 'cui-location-pin'
-    // },
-    // {
-    //   name: 'Avaliadores',
-    //   url: '/avaliadores',
-    //   icon: 'icon-people'
-    // },
-    // {
-    //   name: 'Trabalhos',
-    //   url: '/trabalhos',
-    //   icon: 'icon-pencil'
-    // },
-
-    // {
-    //   title: true,
-    //   name: 'Consulta de Sessões',
-    //   class: '',
-    //   wrapper: {
-    //     element: '',
-    //     attributes: {}
-    //   }
-    // },
-    // {
-    //   name: 'Orais',
-    //   url: '/orais',
-    //   icon: 'cui-speech'
-    // },
-    // {
-    //   name: 'Paineis',
-    //   url: '/paineis',
-    //   icon: 'cui-dashboard'
-    // },
-
-    // {
-    //   title: true,
-    //   name: 'Relatórios',
-    //   class: '',
-    //   wrapper: {
-    //     element: '',
-    //     attributes: {}
-    //   }
-    // },
-
-    // {
-    //   name: '> Avaliadores por Instituto',
-    //   url: '/avaliadoresporinstituto',
-    // },
-    // {
-    //   name: '> Trabalhos por Instituto',
-    //   url: '/trabalhosporinstituto',
-    // },
-    // {
-    //   name: '> Salas e suas Sessões',
-    //   url: '/sessoesporsala',
-    // },
-    // {
-    //   name: 'Sessões Orais',
-    //   url: '/relatorios_orais',
-    // },
-    // {
-    //   name: 'Sessões Paineis',
-    //   url: '/relatorios_paineis',
-    // },
-
-
     {
       title: true,
       name: 'Requisições',
@@ -145,7 +72,7 @@ export default {
     },
 
     {
-      name: 'Imprimir Formulário',
+      name: 'Todos os Formulário',
       url: '/formulario_grid',
       icon: 'cui-print'
 

@@ -46,12 +46,12 @@
           >
             edit
           </v-icon>
-          <v-icon
+          <!-- <v-icon
             small
             @click="deleteItem(props.item)"
           >
             delete
-          </v-icon>
+          </v-icon> -->
         
         </td>
       </template>
