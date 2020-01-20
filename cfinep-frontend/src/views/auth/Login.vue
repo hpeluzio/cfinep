@@ -49,7 +49,7 @@
               <b-card-body class="text-center">
                 <div>
                   <h2>Registre-se</h2>
-                  <p>Sistema gerencial do Simpósio de Integração Acadêmica da Universidade Federal de Viçosa</p>
+                  <p>Sistema gerencial do Cluster da Universidade Federal de Viçosa - Campus Rio Paranaíba</p>
                   <router-link to="/register"><b-button variant="primary" class="active mt-3">Registre-se</b-button></router-link>
                 </div>
               </b-card-body>
